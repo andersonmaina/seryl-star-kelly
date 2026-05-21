@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Payments and Student Services - DeKUT</title>
+  <link rel="icon" type="image/png" href="/img/logo.png" />
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/layout.css" />
+  <link rel="stylesheet" href="/css/staffstudentdash.css" />
+
+  <style>
+    /* Make anchor-based cards behave like block cards and inherit styles */
+    .feature-card {
+      display: block;           /* lets <a> fill the card area */
+      text-decoration: none;   /* remove underlines */
+      color: inherit;          /* keep original text color */
+      cursor: pointer;
+      transition: transform .12s ease, box-shadow .12s ease;
+    }
+
+    /* hover/focus visual affordance */
+    .feature-card:hover,
+    .feature-card:focus {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+      outline: none;
+    }
+
+    /* visible focus for keyboard users */
+    .feature-card:focus-visible {
+      outline: 3px solid rgba(59,130,246,0.25);
+      outline-offset: 4px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav id="mainNavbar" role="navigation" aria-label="Main navigation">
+      <div class="navbar-container">
+        <!-- LEFT: logo + "DeKUT Services" label -->
+        <div class="nav-left" aria-hidden="false">
+          <a class="brand-link" aria-label="DeKUT Home" href="/index.html">
+            <img src="/img/logo.png" alt="DeKUT logo" class="brand-image" loading="lazy" decoding="async" />
+            <div class="brand-text">DeKUT Services</div>
+          </a>
+        </div>
+
+        <!-- CENTER: title text -->
+        <div class="nav-center-title">Payments and Student Services</div>
+
+        <!-- RIGHT: Home link -->
+        <div class="nav-right">
+          <a class="nav-home" href="/index.html">Home</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- main content -->
+  <main role="main" class="container my-4">
+    <div class="container">
+      <main>
+        <section class="hero">
+          <div class="hero-card tilt-wrap fade-up">
+            <div class="tilt-inner">
+              <h2>Payments and Student Services made simple</h2>
+              <p>Fast, secure and transparent payments — for fees, applications and staff meal plans.</p>
+
+              <div class="grid" style="margin-top:20px">
+
+                <a aria-label="Make Payments" class="feature-card fade-up delay" href="/Payment/Payment.html">
+                  <div style="display:flex;justify-content:space-between;align-items:center">
+                    <div class="ic">💳</div>
+                    <div class="badge">DeKUT</div>
+                  </div>
+                  <h3>Make Payments</h3>
+                  <p>Fee payment and other charges (for students with registration number)</p>
+                </a>
+
+                <a aria-label="Application Fee" class="feature-card fade-up" href="/Payment/ApplicationFeePayment.html">
+                  <div style="display:flex;justify-content:space-between;align-items:center">
+                    <div class="ic">📝</div>
+                    <div class="badge">DeKUT</div>
+                  </div>
+                  <h3>Application Fee</h3>
+                  <p>Application fee only (for new students)</p>
+                </a>
+
+                <a aria-label="Endowment Fund" class="feature-card fade-up delay" href="/Payment/EndowmentFundPayment.html">
+                  <div style="display:flex;justify-content:space-between;align-items:center">
+                    <div class="ic">🏦</div>
+                    <div class="badge">DeKUT</div>
+                  </div>
+                  <h3>Endowment Fund</h3>
+                  <p>Endowment fund contributions and payments</p>
+                </a>
+
+                <a aria-label="Fee Payment Statement" class="feature-card fade-up" href="#" onclick="alert('Fee Statement is currently offline. Please check back later.')">
+                  <div style="display:flex;justify-content:space-between;align-items:center">
+                    <div class="ic">📄</div>
+                    <div class="badge">Finance</div>
+                  </div>
+                  <h3>Fee Payment Statement</h3>
+                  <p>Official fee statements for the finance office</p>
+                </a>
+
+              </div>
+
+              <div class="strip">
+                <div><a href="#" class="btn" onclick="alert('All available services are listed above.')">View all services</a></div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </main>
+
+  <!-- Footer: same color as navbar -->
+  <footer class="site-footer" role="contentinfo" aria-label="Site footer">
+    <div class="footer-inner">
+      <div class="footer-line1">&copy; 2026 - DeKUT Services</div>
+      <div class="footer-line2">Developed and Designed by DeKUT, SDC.</div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    // small interactive tilt for hero card and feature cards
+    function applyTilt(selector, strength){
+      document.querySelectorAll(selector).forEach(el => {
+        const inner = el.querySelector('.tilt-inner') || el;
+        el.addEventListener('mousemove', e => {
+          const rect = el.getBoundingClientRect();
+          const x = (e.clientX - rect.left) / rect.width - 0.5;
+          const y = (e.clientY - rect.top) / rect.height - 0.5;
+          inner.style.transform = `rotateX(${(-y*strength).toFixed(2)}deg) rotateY(${(x*strength).toFixed(2)}deg)`;
+        });
+        el.addEventListener('mouseleave', () => { inner.style.transform = '' });
+      })
+    }
+    applyTilt('.tilt-wrap, .feature-card', 8);
+
+    // reveal animation for fade-up elements on load
+    window.addEventListener('load', ()=>{
+      document.querySelectorAll('.fade-up').forEach((el,i)=>{
+        el.style.animationDelay = (i*70)+'ms';
+        el.classList.add('revealed');
+      })
+    })
+
+    // Navbar scroll shadow
+    ;(function () {
+      const nav = document.getElementById('mainNavbar');
+      if (!nav) return;
+      function onScroll(){
+        if(window.scrollY > 8) nav.classList.add('navbar-scrolled');
+        else nav.classList.remove('navbar-scrolled');
+      }
+      onScroll();
+      window.addEventListener('scroll', onScroll, {passive:true});
+    })();
+  </script>
+</body>
+</html>

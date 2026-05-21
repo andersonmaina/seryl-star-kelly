@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DeKUT Services - PesaFlow Payment</title>
+  <link rel="icon" type="image/png" href="/img/logo.png" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/layout.css" />
+  <link rel="stylesheet" href="/css/paymentpesaflow.css" />
+</head>
+<body>
+  <header>
+    <nav id="mainNavbar" role="navigation" aria-label="Main navigation" style="background-color: #1b5e20 !important;">
+      <div class="navbar-container">
+        <!-- LEFT: logo + "DeKUT Services" label -->
+        <div class="nav-left">
+          <a class="brand-link" aria-label="DeKUT Home" href="/index.html" style="color: #ffffff !important;">
+            <img src="/img/logo.png" alt="DeKUT logo" class="brand-image" loading="lazy" decoding="async" />
+            <div class="brand-text" style="color: #ffffff !important;">DeKUT Services</div>
+          </a>
+        </div>
+
+        <!-- CENTER: title text -->
+        <div class="nav-center-title" style="color: #ffffff !important; font-weight: 600;">Payments and Student Services</div>
+
+        <!-- RIGHT: Home link -->
+        <div class="nav-right">
+          <a class="nav-home" href="/index.html" style="color: #ffffff !important; font-weight: 600;">Home</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main Body Content Container -->
+  <main class="pesaflow-container" role="main">
+    <!-- Top-Right Registration, Phone details -->
+    <div class="meta-info" id="metaDetails">C025-01-0841/2022, 254702861379</div>
+
+    <!-- Payment Bill Card -->
+    <div class="bill-card">
+      <div class="bill-item">
+        <span class="bill-label">Status</span>
+        <span class="bill-value text-success" id="paymentStatus" style="font-size: 18px; font-weight: 700; display: block;">Mpesa stk sent succesfully</span>
+        <span class="text-muted" id="providerDetails" style="font-size: 11px; margin-top: 4px; font-weight: 500; display: block; letter-spacing: 0.5px; line-height: 1.4;">ECITIZEN<br>EQUITY ACCOUNT,<br>PROVIDER: SKYLINK SCOPE TECHNOLOGIES</span>
+      </div>
+      <div class="bill-item bill-item-right">
+        <span class="bill-label">Total Bill</span>
+        <span class="bill-value" id="totalBill">KES 1.00</span>
+      </div>
+    </div>
+
+    <!-- Select Payment Mode heading -->
+    <h2 class="section-title">Other Payment Modes</h2>
+
+    <!-- Payment Modes buttons grid -->
+    <div class="payment-grid" role="group" aria-label="Select Payment Mode options">
+      <button type="button" class="payment-btn" disabled>
+        <span>Kenya Commercial Bank</span>
+      </button>
+      <button type="button" class="payment-btn" disabled>
+        <span>Co-operative Bank of Kenya</span>
+      </button>
+      <button type="button" class="payment-btn" disabled>
+        <span>Equity Bank</span>
+      </button>
+      <button type="button" class="payment-btn" disabled>
+        <span>Absa Bank Kenya</span>
+      </button>
+      <button type="button" class="payment-btn" disabled>
+        <span>NCBA Bank</span>
+      </button>
+      <button type="button" class="payment-btn" disabled>
+        <span>Standard Chartered Bank</span>
+      </button>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="pesaflow-footer" role="contentinfo">
+    &copy; 2026 - <a href="/index.html">DeKUT Services</a><br>
+    Developed and Designed by DeKUT, SDC. Reach us at: <a href="mailto:sdc@dkut.ac.ke">sdc@dkut.ac.ke</a>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script type="module" src="/src/paymentPesaFlow.ts"></script>
+</body>
+</html>

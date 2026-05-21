@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Endowment Fund - DeKUT Services</title>
+  <link rel="icon" type="image/png" href="/img/logo.png" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/layout.css" />
+  <link rel="stylesheet" href="/css/payment.css" />
+</head>
+<body>
+  <header>
+    <nav id="mainNavbar" role="navigation" aria-label="Main navigation">
+      <div class="navbar-container">
+        <!-- LEFT: logo + "DeKUT Services" label -->
+        <div class="nav-left">
+          <a class="brand-link" aria-label="DeKUT Home" href="/index.html">
+            <img src="/img/logo.png" alt="DeKUT logo" class="brand-image" loading="lazy" decoding="async" />
+            <div class="brand-text">DeKUT Services</div>
+          </a>
+        </div>
+
+        <!-- CENTER: title text -->
+        <div class="nav-center-title">Payments and Student Services</div>
+
+        <!-- RIGHT: Home link -->
+        <div class="nav-right">
+          <a class="nav-home" href="/index.html">Home</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- main content -->
+  <main role="main" class="container my-4">
+    <div class="card">
+      <div id="messages">
+        <div class="page-title" role="heading" aria-level="1">
+          Endowment Fund Contribution
+        </div>
+        <p class="muted text-center">
+          Support DeKUT by contributing to the Endowment Fund.
+        </p>
+      </div>
+
+      <form id="paymentForm" class="grid" novalidate>
+        <!-- Bill Description (Fixed for Endowment Fund) -->
+        <div class="full">
+          <label>Bill Description</label>
+          <input class="input" type="text" value="Endowment Fund Contribution" readonly />
+          <input type="hidden" id="BillDesc" name="BillDesc" value="Endowment Fund" />
+        </div>
+
+        <div>
+          <label>Currency</label>
+          <input class="input" value="KES" readonly type="text" id="Currency" name="Currency" />
+        </div>
+
+        <div>
+          <label for="amountExpected">Amount (KES)</label>
+          <input class="input" type="number" id="amountExpected" min="1" step="1" placeholder="e.g. 1000" required name="AmountExpected" value="" />
+          <div class="field-help muted">
+            Enter the amount you wish to contribute.
+          </div>
+        </div>
+
+        <div>
+          <label for="clientMSISDN">
+            Phone Number
+            <span class="muted small">(M-Pesa STK Push)</span>
+          </label>
+          <input class="input" type="tel" id="clientMSISDN" placeholder="2547xxxxxxxx" required name="ClientMSISDN" value="" />
+        </div>
+
+        <div class="full">
+          <label for="clientName">Contributor Full Name</label>
+          <input class="input" type="text" id="clientName" placeholder="e.g. John Mwangi" required name="ClientName" value="" />
+        </div>
+
+        <!-- Hidden fields for backend/SDK compatibility -->
+        <div class="full" aria-hidden="true" style="display:none;">
+          <input type="hidden" value="endowment@dkut.ac.ke" id="ClientEmail" name="ClientEmail" />
+          <input type="hidden" value="ENDOWMENT" id="ClientIDNumber" name="ClientIDNumber" />
+          <input type="hidden" value="true" id="sendSTK" name="sendSTK" />
+        </div>
+
+        <!-- Summary -->
+        <div class="full">
+          <div class="summary">
+            <strong>Payment Summary</strong>
+            <div id="summaryText" class="muted small">
+              Fill the form to preview your contribution details.
+            </div>
+          </div>
+        </div>
+
+        <div class="full" style="display:flex;gap:12px;justify-content:flex-end">
+          <button type="button" class="btn" id="previewBtn">Preview</button>
+          <button type="submit" class="btn" id="submitBtn">Make Contribution</button>
+        </div>
+      </form>
+
+      <footer class="note">
+        By clicking <em>Make Contribution</em>, you agree to DKUT payment terms.
+      </footer>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer" role="contentinfo" aria-label="Site footer">
+    <div class="footer-inner">
+      <div class="footer-line1">&copy; 2026 - DeKUT Services</div>
+      <div class="footer-line2">Developed and Designed by DeKUT, SDC.</div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script type="module" src="/src/endowmentFund.ts"></script>
+</body>
+</html>

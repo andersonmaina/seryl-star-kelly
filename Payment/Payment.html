@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pay Fees - DeKUT Services</title>
+  <link rel="icon" type="image/png" href="/img/logo.png" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/layout.css" />
+  <link rel="stylesheet" href="/css/payment.css" />
+</head>
+<body>
+  <header>
+    <nav id="mainNavbar" role="navigation" aria-label="Main navigation">
+      <div class="navbar-container">
+        <!-- LEFT: logo + "DeKUT Services" label -->
+        <div class="nav-left">
+          <a class="brand-link" aria-label="DeKUT Home" href="/index.html">
+            <img src="/img/logo.png" alt="DeKUT logo" class="brand-image" loading="lazy" decoding="async" />
+            <div class="brand-text">DeKUT Services</div>
+          </a>
+        </div>
+
+        <!-- CENTER: title text -->
+        <div class="nav-center-title">Payments and Student Services</div>
+
+        <!-- RIGHT: Home link -->
+        <div class="nav-right">
+          <a class="nav-home" href="/index.html">Home</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- main content -->
+  <main role="main" class="container my-4">
+    <div class="card">
+      <div id="messages">
+        <div class="page-title" role="heading" aria-level="1">Pay for Your Fees and Other Charges</div>
+      </div>
+
+      <form id="paymentForm" class="grid" novalidate>
+        <div class="full">
+          <label for="BillDescType">Bill Description <span class="muted">(choose a precise description)</span></label>
+          <select class="input" name="billDesc" id="BillDescType" required disabled>
+            <option value="0">Fee Payment</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="currency">Currency</label>
+          <input class="input" type="text" id="currency" value="KES" readonly aria-readonly="true" name="Currency">
+        </div>
+
+        <div>
+          <label for="amountExpected">Amount (KES)</label>
+          <input class="input" type="number" id="amountExpected" min="1" step="1" required inputmode="numeric" placeholder="e.g. 5000" name="AmountExpected" value="">
+          <div class="field-help muted">Enter the exact amount in Kenyan Shillings.</div>
+        </div>
+
+        <div>
+          <label for="clientMSISDN">Phone Number <span class="muted small">(format: <code>2547xxxxxxxx, 07xxxxxxx, 01xxxxxx</code>)</span></label>
+          <input class="input" type="tel" id="clientMSISDN" name="ClientMSISDN" inputmode="numeric" placeholder="2547xxxxxxxx" required value="">
+          <div class="field-help muted">We will send an STK push to this number.</div>
+        </div>
+
+        <div>
+          <label for="clientName">Student Registration Number</label>
+          <input class="input" type="text" id="clientName" name="ClientName" placeholder="e.g. D12345/2018" required value="">
+          <div class="stud-name visually-hidden" id="studentNameBadge">&nbsp;</div>
+        </div>
+
+        <!-- Hidden fields for backend/SDK compatibility -->
+        <div class="full" aria-hidden="true" style="display:none;">
+          <input type="email" id="clientEmail" value="example@gmail.com" name="ClientEmail">
+          <input type="text" id="clientIDNumber" value="test123" name="ClientIDNumber">
+          <input type="hidden" id="sendSTK" name="sendSTK" value="true">
+        </div>
+
+        <div class="full">
+          <div class="summary" id="summary">
+            <div><strong>Payment summary</strong></div>
+            <div class="muted small" id="summaryText">Fill the form to preview a summary before submitting.</div>
+          </div>
+        </div>
+
+        <div class="full" style="display:flex;gap:12px;justify-content:flex-end;align-items:center">
+          <button type="button" class="btn" id="previewBtn">Preview</button>
+          <button type="submit" class="btn" id="submitBtn" disabled>Make Payment</button>
+        </div>
+      </form>
+
+      <footer class="note">By clicking <em>Make Payment</em>, you agree to the university's payment terms.</footer>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer" role="contentinfo" aria-label="Site footer">
+    <div class="footer-inner">
+      <div class="footer-line1">&copy; 2026 - DeKUT Services</div>
+      <div class="footer-line2">Developed and Designed by DeKUT, SDC.</div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script type="module" src="/src/payment.ts"></script>
+</body>
+</html>

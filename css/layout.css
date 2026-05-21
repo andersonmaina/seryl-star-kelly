@@ -1,0 +1,172 @@
+:root {
+  --brand-green: #156504;
+  --nav-height: 72px;
+  --left-width: 200px;
+  --nav-shadow: 0 8px 30px rgba(6,40,10,0.22);
+}
+
+html, body { height: 100%; }
+body {
+  font-family: Inter, system-ui, Arial;
+  margin: 0;
+  background: #f6f8f9;
+  color: #0f172a;
+  padding-top: calc(var(--nav-height) + 12px);
+}
+
+/* Fixed top navbar */
+#mainNavbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--nav-height);
+  background: var(--brand-green);
+  z-index: 1050;
+  box-shadow: var(--nav-shadow);
+  display: flex;
+  align-items: center;
+}
+
+.navbar-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 6px 16px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  gap: 12px;
+}
+
+/* LEFT: logo + label */
+.nav-left {
+  width: var(--left-width);
+  min-width: 110px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.brand-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: inherit;
+  width: 100%;
+}
+
+.brand-image {
+  height: calc(var(--nav-height) - 18px);
+  width: auto;
+  max-width: 96px;
+  object-fit: contain;
+  display: block;
+}
+
+.brand-text {
+  color: #fff;
+  font-weight: 800;
+  font-size: 1.28rem;
+  line-height: 1;
+  white-space: nowrap;
+  text-shadow: 0 1px 0 rgba(0,0,0,0.04);
+}
+
+/* CENTER: absolutely centered title */
+.nav-center-title {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #fff;
+  font-size: 1.02rem;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  text-align: center;
+  white-space: nowrap;
+  pointer-events: none;
+  max-width: calc(100% - (var(--left-width) + 120px));
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* RIGHT: Home link */
+.nav-right { margin-left: auto; display: flex; align-items: center; gap: 12px; }
+.nav-home {
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+  padding: 6px 10px;
+  border-radius: 8px;
+  background: transparent;
+}
+.nav-home:hover, .nav-home:focus { background: rgba(255,255,255,0.06); text-decoration: none; color: #fff; }
+
+/* Small screens */
+@media (max-width: 900px) {
+  :root { --left-width: 160px; --nav-height: 68px; }
+  .brand-image { height: calc(var(--nav-height) - 16px); max-width: 78px; }
+  .brand-text { font-size: 1.05rem; }
+  .nav-center-title { font-size: .98rem; max-width: calc(100% - (var(--left-width) + 100px)); }
+  body { padding-top: calc(var(--nav-height) + 12px); }
+}
+
+@media (max-width: 560px) {
+  #mainNavbar { height: auto; padding: 8px 0; }
+  body { padding-top: calc(86px + 12px); }
+  .navbar-container { flex-direction: column; align-items: center; padding: 8px 12px; gap: 6px; }
+  .nav-left { width: 100%; justify-content: center; }
+  .brand-link { justify-content: center; }
+  .brand-image { max-height: 64px; }
+  .brand-text { font-size: 1.05rem; }
+  .nav-center-title { position: static; transform: none; max-width: 100%; pointer-events: auto; }
+  .nav-right { width: 100%; display: flex; justify-content: flex-end; padding-right: 8px; }
+}
+
+#mainNavbar.navbar-scrolled { box-shadow: 0 12px 36px rgba(6,40,10,0.28); transition: box-shadow .16s ease; }
+
+/* compact footer: two very small lines, same color as navbar */
+.site-footer {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: var(--footer-height);
+  background: #fff;
+  color: #156504;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1040;
+  border-top: 1px solid rgba(0,0,0,0.08); /* slight border for contrast */
+  box-shadow: 0 -2px 8px rgba(6,40,10,0.10);
+}
+.site-footer .footer-inner {
+  max-width: 1200px;
+  width: 100%;
+  padding: 6px 12px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  align-items: center;
+  justify-content: center;
+}
+.site-footer .footer-line1 {
+  font-size: 0.82rem;
+  font-weight: 600;
+  line-height: 1;
+}
+.site-footer .footer-line2 {
+  font-size: 0.72rem;
+  opacity: 0.95;
+}
+
+/* small screens: keep footer readable */
+@media (max-width:520px) {
+  :root { --footer-height: 48px; }
+  body { padding-bottom: calc(var(--footer-height) + 12px); }
+  .site-footer { height: var(--footer-height); }
+  .site-footer .footer-line1 { font-size: .78rem; }
+  .site-footer .footer-line2 { font-size: .7rem; }
+}
